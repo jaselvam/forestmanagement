@@ -8,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="User_entry1")
+@Table(name="User_entry1") // @Table is optional if we dont declare this annotation table we will created in the name of entity.
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)  // primary key will be Auto generated.
 	private int userId;
 	@Column(name="Username")
 	private String userName;
@@ -24,7 +24,7 @@ public class User {
 		// no argument constructor
 	}
 	
-	public User(int userId) {
+	public User(int userId) {  // one parametrized constructor.
 		super();
 		this.userId = userId;
 	}
@@ -57,7 +57,8 @@ public class User {
 		this.password = pwd;
 		this.role = role;
 	}
-
+	 //getters and setters
+	
 	public int getUserId() {
 		return userId;
 	}

@@ -19,7 +19,7 @@ public class AdminService implements IAdminService{
 
 	public boolean addAdmin(Admin admin) {
 		
-		if(admin.getAdminPassword().matches(Validation.regex) && admin.getAdminName()!="")  //regex is a static variable declared in utility package.
+		if(admin.getAdminPassword().matches(Validation.regex) && admin.getAdminName()!="")  //'regex' is a static variable declared in utility package.
 		{
 			return adao.addAdmin(admin); // addAdmin() method in the Dao layer is called and this method returns a boolean value.
 		}
@@ -31,7 +31,7 @@ public class AdminService implements IAdminService{
 
 	public boolean updateAdmin(Admin admin) {
 		
-		if(admin.getAdminPassword().matches(Validation.regex)) // regex is a static variable declared in utility package.
+		if(admin.getAdminPassword().matches(Validation.regex)) // 'regex' is a static variable declared in utility package.
 		{
 			return adao.updateAdmin(admin);//calls updateAdmin() method in DAO layer of admin module and this method returns a boolean value.
 		}

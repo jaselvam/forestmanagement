@@ -8,21 +8,11 @@ import com.cg.fms.utility.Validation;
 
 
 public class LoginService implements ILoginService{
-	ILoginDao ldao=new LoginDao();
-	
+	ILoginDao ldao=new LoginDao(); // Object creation of LoginDao class of type ILoginDao interface(Dynamic polymorphism).
+											
 
-	public User login(User user) {
-		
-		return ldao.login(user);
-	}
-
-	public User logout(User user) {
-		
-		return ldao.logout(user);
-	}
-
-	public User addUser(User user) {
-		if(user.getUserName().length()>5 && user.getPassword().matches(Validation.regex) && user.getUserName().length()>=4 && (user.getRole().equalsIgnoreCase("admin")||user.getRole().equalsIgnoreCase("Customer")))
+	public User addUser(User user) {    //validation takes place according to the regex stated in Validation class.
+		if(user.getPassword().matches(Validation.regex) && user.getUserName().length()>=4 && (user.getRole().equalsIgnoreCase("admin")||user.getRole().equalsIgnoreCase("Customer")))
 		{
 			return ldao.addUser(user);
 		}
@@ -35,9 +25,16 @@ public class LoginService implements ILoginService{
 	public User removeUser(User user) {
 		
 		return ldao.removeUser(user);
-
-	
 	}
-	
+	public User login(User user) {
+		
+		return ldao.login(user);
+	}
+
+	public User logout(User user) {
+		
+		return ldao.logout(user);
+	}
+
 
 }

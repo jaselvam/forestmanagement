@@ -44,6 +44,7 @@ public class Admin {
 		this.adminPassword = adminPassword;
 	}
 	//getters and setters
+	
 	public int getAdminId() {
 		return adminId;
 	}

@@ -3,18 +3,20 @@ package com.forestry.forestmanagement;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
+import com.cg.fms.dao.ILoginDao;
+import com.cg.fms.dao.LoginDao;
 import com.cg.fms.dto.User;
 import com.cg.fms.service.ILoginService;
 import com.cg.fms.service.LoginService;
 
 public class TestMethods {
-	ILoginService service=new LoginService();
+	ILoginDao dao=new LoginDao();
 	
 	@Test
 	public void testAddUser()
 	{
 		User userRecord1=new User("lakshmi","Lakshmi123","admin");
-		User user1=service.addUser(userRecord1);
+		User user1=dao.addUser(userRecord1);
 		Assertions.assertEquals("lakshmi",user1.getUserName());
 		Assertions.assertEquals("Lakshmi123",user1.getPassword());
 		Assertions.assertEquals("admin",user1.getRole());
@@ -32,7 +34,7 @@ public class TestMethods {
 	public void testLogin()
 	{
 		User userrecord=new User(16,"janani","karthika123");
-		User user=service.login(userrecord);
+		User user=dao.login(userrecord);  // verify the login method in dao layer
 		Assertions.assertEquals(16,user.getUserId());
 		Assertions.assertEquals("janani",user.getUserName());
 		Assertions.assertEquals("karthika123",user.getPassword());
@@ -43,7 +45,7 @@ public class TestMethods {
 	@Test
 	public void testLogout() {
 		User userRecord=new User(22,"vishnu","hamsI123","admin");
-		User user=service.logout(userRecord);
+		User user=dao.logout(userRecord);   // verify the logout method in dao layer
 		Assertions.assertEquals(22,user.getUserId());
 		Assertions.assertEquals("vishnu",user.getUserName());
 		Assertions.assertEquals("hamsI123",user.getPassword());
@@ -53,7 +55,7 @@ public class TestMethods {
 	public void TestRemoveuser()
 	{
 		User userRecord=new User(37,"1akshmi","Lakshmi123","admin");
-		User user=service.removeUser(userRecord);
+		User user=dao.removeUser(userRecord);    // verify the removeUser method in dao layer
 		Assertions.assertEquals(37,user.getUserId());
 		Assertions.assertEquals("lakshmi",user.getUserName());
 		Assertions.assertEquals("Lakshmi123",user.getPassword());
